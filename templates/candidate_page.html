@@ -1,22 +1,64 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>{{candidateName}}</title>
 
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='pico.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='candidate.css') }}">
 </head>
 
 <body>
-    <article>
+    <div id="HomeButtonDiv">
+        <a href="{{ url_for('candidates') }}">
+            <img src="{{ url_for('static', filename='site images/logo.png') }}" id="HomeButton" height="50px" width="auto">
+        </a>
+    </div>
+    <div id="TopBar">
+        
+        <div id="CandidateNameDiv">
+            <img class="star" src="{{ url_for('static', filename='site images/star.svg') }}">
+            {{candidateName}}
+            <img class="star" src="{{ url_for('static', filename='site images/star.svg') }}">
+        </div>
+    </div>
     
-    <img src="{{ url_for('static', filename='candidate images/' + candidateImage) }}">
+    <div id="BackgroundDiv">
+        <img src="{{ url_for('static', filename='candidate images/' + candidateImage) }}" id="ProfilePicture">
 
-    <h1>{{candidateName}}</h1>
-    <p>{{candidateDOB}}</p>
-    <p>{{candidateLocation}}</p>
-    <p>{{candidateEmail}}</p>
-    {% for i in candidateSkills %}
-        <p>{{i[0]}} : {{i[1]}}</p>
-    {% endfor %}
-    </article>
+        <marquee behavior="scroll" direction="right" scrollamount="5"><hr id="ProfilePictureDivider"></marquee>
+
+        <div id="MainContainer">
+            <h2 class="CInfoTitle">Name</h2>
+            <p class="CInfo">{{candidateName}}</p>
+            <h2 class="CInfoTitle">Email</h2>
+            <p class="CInfo">{{candidateEmail}}</p>
+            <h2 class="CInfoTitle">Location</h2>
+            <p class="CInfo">{{candidateLocation}}</p>
+            <h2 class="CInfoTitle">Date of Birth</h2>
+            <p class="CInfo">{{candidateDOB}}</p>
+        
+            <hr style="width: 80%; height: 1px; border: none; border-top: 5px dashed #f787b6;">
+
+            <h2 class="CInfoTitle">Skills</h2>
+
+            <div class="skill">
+            {% for i in candidateSkills %}
+            <li>
+            <p>{{i[0]}}</p>
+        
+            <span class="bar">
+                <span class="{{ i[0] }}"
+                      style="display: inline-block; width: {{ 20 * i[1] }}%; animation: {{ i[0] }};">
+                </span>
+            </span>
+            
+        
+            </li>
+            {% endfor %}
+            </div>
+            <br>
+
+    
+        </div>
+    </div>
 </html>

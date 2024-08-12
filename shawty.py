@@ -172,11 +172,7 @@ def register():
                 else:
                     skillID = skillID[0]
 
-                # Insert into candidate_skills table
-                cursor.execute(
-                    "INSERT INTO candidate_skills (candidate_id, skill_id, rating) VALUES (?, ?, ?)",
-                    (candidate_id, skillID, rating),
-                )
+                cursor.execute("INSERT INTO candidate_skills (candidate_id, skill_id, rating) VALUES (?, ?, ?)",(candidate_id, skillID, rating),)
 
             connection.commit()
 
@@ -262,9 +258,7 @@ def edit(candidate_id):
             )
 
             # Delete existing skills
-            cursor.execute(
-                "DELETE FROM candidate_skills WHERE candidate_id = ?", (candidate_id,)
-            )
+            cursor.execute("DELETE FROM candidate_skills WHERE candidate_id = ?", (candidate_id,))
 
             for skill, rating in zip(skills, ratings):
                 skill = skill.strip()
@@ -286,7 +280,7 @@ def edit(candidate_id):
 
             connection.commit()
 
-        return redirect(url_for("candidates"))
+        return redirect(url_for("editlist"))
 
     return render_template(
         "edit_page.html",
@@ -308,6 +302,7 @@ def delete(candidate_id):
     with sqlite3.connect("data.db") as connection:
         cursor = connection.cursor()
         cursor.execute("DELETE FROM candidates WHERE id = ?", (candidate_id,))
+        cursor.execute("DELETE FROM candidate_skills WHERE candidate_id = ?", (candidate_id,))
         connection.commit()
 
     return redirect(url_for("editlist"))
