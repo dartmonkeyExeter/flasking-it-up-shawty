@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Edit List</title>
+</head>
+
+<body>
+    <h1>Candidates</h1>
+    <p>Here are the candidates:</p>
+
+    <form method="post" action="/editlist">
+        <input type="text" name="query" placeholder="Search..." value="{{ query }}">
+        <input type="submit" value="Search">
+    </form>
+
+    <ul>
+        {% for candidate in candidates %}
+        <li>
+            <a href="{{ url_for('edit', candidate_id=candidate[0]) }}">{{ candidate[1] }}</a>
+            <button onclick="window.location.href='{{ url_for('delete', candidate_id=candidate[0]) }}'">Delete</button>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+
+</html>

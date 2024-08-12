@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='pico.min.css') }}">
+
+    <script>
+        // Function to add a new skill input
+        function addSkill() {
+            const skillsContainer = document.getElementById('skills-container');
+            
+            // Create a new div for skill
+            const skillEntry = document.createElement('div');
+            skillEntry.className = 'skill-entry';
+
+            // Create input for skill name
+            const skillName = document.createElement('input');
+            skillName.type = 'text';
+            skillName.name = 'skills[]';
+            skillName.placeholder = 'Skill Name';
+            skillName.required = true;
+
+            // Create input for skill rating
+            const skillRating = document.createElement('input');
+            skillRating.type = 'number';
+            skillRating.name = 'ratings[]';
+            skillRating.placeholder = 'Rating (1-5)';
+            skillRating.min = 1;
+            skillRating.max = 5;
+            skillRating.required = true;
+
+            // create a remove button
+            const removeButton = document.createElement('button');
+            removeButton.type = 'button';
+            removeButton.textContent = 'Remove';
+            removeButton.onclick = function() {
+                skillsContainer.removeChild(skillEntry);
+            }
+
+            // Append to the container
+            skillEntry.appendChild(skillName);
+            skillEntry.appendChild(skillRating);
+            skillEntry.appendChild(removeButton);
+            skillsContainer.appendChild(skillEntry);
+            }
+    </script>
+</head>
+
+</html>
+<body>
+    <form action="{{ url_for('register') }}" method="POST" enctype="multipart/form-data">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="date_of_birth">Date of Birth:</label>
+        <input type="date" id="date_of_birth" name="date_of_birth" required>
+
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="img">Upload Image: </label>
+        <input type="file" id="img" name="img" accept=".png,.jpg,.jpeg,.jfif,.webp">
+
+        <div id="skills-container">
+        
+        </div>
+        <button type="button" onclick="addSkill()">Add Skill</button>
+
+        <button type="submit">Register</button>
+    </form>
+</body>

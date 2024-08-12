@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Candidates</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='pico.min.css') }}">
+</head>
+
+<body>
+    <h1>Candidates</h1>
+    <p>Here are the candidates:</p>
+    <ul>
+        {% for candidate in candidates %}
+        <li>
+            <a href="{{ url_for('candidate', candidate_id=candidate[0]) }}">{{ candidate[1] }}</a>
+            {% if loggedin %}
+            {% if candidate[5] == 1 %}
+            <img src="../static/site images/checked.png" alt="checked" width="20" height="20">
+            {% else %}
+            <img src="../static/site images/unchecked.png" alt="unchecked" width="20" height="20">
+            {% endif %}
+            {% endif %}
+        </li>
+
+        {% endfor %}
+    </ul>
+</body>
+
+</html>

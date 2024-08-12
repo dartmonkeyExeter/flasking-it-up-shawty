@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{candidateName}}</title>
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='pico.min.css') }}">
+</head>
+
+<body>
+    <article>
+    
+    <img src="{{ url_for('static', filename='candidate images/' + candidateImage) }}">
+
+    <h1>{{candidateName}}</h1>
+    <p>{{candidateDOB}}</p>
+    <p>{{candidateLocation}}</p>
+    <p>{{candidateEmail}}</p>
+    {% for i in candidateSkills %}
+        <p>{{i[0]}} : {{i[1]}}</p>
+    {% endfor %}
+    </article>
+</html>
