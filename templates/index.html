@@ -1,16 +1,58 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>homepage</title>
 
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
+
 </head>
 
 <body>
-    <h1>homepage</h1>
-    <p>i shidded and farded (poo)</p>
-    <p>{{content}}</p>
-    {% for i in range(0,10) %}
-        <p>{{i}}</p>
-    {% endfor %}
+
+    <audio autoplay loop id="bgm">
+        <source src="../static/site%20images/CS.ogg" type="audio/ogg">
+    </audio>
+
+    <div class="overlay-container">
+        <img src="{{ url_for('static', filename='site images/p3overlay.png') }}" id="overlay">
+    </div>
+
+    <div class="video-container">
+        <video id="openingVideo" autoplay muted playsinline>
+            <source src="https://p3re.jp/en/resources/img/top/fv_movie1_bef3ec38c6b4ba869207fc85cf95bc78.mp4"
+                type="video/mp4">
+        </video>
+        <video id="loopingVideo" muted playsinline loop>
+            <source src="https://p3re.jp/en/resources/img/top/fv_movie2_1aaf21a0de60678450744da0dbaf9ef4.mp4"
+                type="video/mp4">
+        </video>
+    </div>
+
+    <svg class="selector1" viewBox="0 0 125 150" preserveAspectRatio="none">
+        <polygon class="white" points="120,20 110,150 20,115"></polygon>
+    </svg>
+
+    <svg class="selector2" viewBox="0 0 125 150" preserveAspectRatio="none">
+        <polygon class="red" points="125,10 115,150 10,115"></polygon>
+    </svg>
+
+    <button class="MenuButtons" id="MenuB1">
+        <a href="{{ url_for('candidates') }}" class="MenuText" id="MenuB1Text">ABOUT</a>
+    </button>
+    <button class="MenuButtons" id="MenuB2">
+        <a href="{{ url_for('candidates') }}" class="MenuText" id="MenuB2Text">CANDIDATES</a>
+    </button>
+    <button class="MenuButtons" id="MenuB3">
+        <a href="{{ url_for('register') }}" class="MenuText" id="MenuB3Text">REGISTER</a>
+    </button>
+    <button class="MenuButtons" id="MenuB4">
+        <a href="{{ url_for('admin') }}" class="MenuText" id="MenuB4Text">ADMIN</a>
+    </button>
+    <button class="MenuButtons" id="MenuB5">
+        <a href="{{ url_for('login') }}" class="MenuText" id="MenuB5Text">SYSTEM</a>
+    </button>
+</body>
+
 </html>
