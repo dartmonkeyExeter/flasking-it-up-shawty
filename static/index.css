@@ -145,6 +145,7 @@ video {
     z-index: 5;
     font-size: 86px;
     transition: font-size 0.2s ease;
+    animation: ripple 5s infinite;
 }
 
 #MenuB1Text:hover {
@@ -257,21 +258,31 @@ video {
         0 20px 30px rgba(0, 0, 0, 0);
 }
 
-#BigNumber {
+#Credit {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 1%;
+    left: 7%;
     transform: translate(-50%, -50%);
     z-index: 10;
     border: none;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
+    opacity: 0.5;
     background-color: transparent;
     font-family: persona3;
-    font-size: 78px;
-    letter-spacing: -10px;
+    font-size: 20px;
+    letter-spacing: -2px;
     text-align: center;
     font-weight: bold;
     z-index: 1;
+    color: #757476;
     padding: 0px 0px;
+    animation: fadeIn 10s ease-in-out;
+}
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0.5;
+    }
 }

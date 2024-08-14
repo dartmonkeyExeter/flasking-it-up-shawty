@@ -2,8 +2,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const openingVideo = document.getElementById('openingVideo');
     const loopingVideo = document.getElementById('loopingVideo');
     const bgm = document.getElementById('bgm');
+    const sfx2 = document.getElementById('openingsound');
 
-    bgm.volume = 0.5; // Set the volume of the background music to 10%
+    bgm.volume = 0.25; // Set the volume of the background music to 10%
+    sfx2.volume = 0.25; // Set the volume of the opening sound to 50%
 
     function animateElements() {
         const elements = document.querySelectorAll('.MenuButtons');
@@ -32,9 +34,13 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 450); // Delay in milliseconds before starting the animation
     }
 
+    bgm.play(); // Start playing the background music
     openingVideo.play(); // Start playing the opening video
     animateElements(); // Start the animation for the menu buttons
 
+    setTimeout(() => {
+        sfx2.play(); // Start playing the opening sound
+    }, 750); // Delay in milliseconds before starting the background music
     
 
     openingVideo.onended = function () {

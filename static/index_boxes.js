@@ -4,6 +4,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const svg1 = document.querySelector('.selector1');
     const svg2 = document.querySelector('.selector2');
 
+    const sfx1 = document.getElementById('hover'); // play when hovering over buttons
+    sfx1.volume = 0.25; // Set the volume of the hover sound to 50%
+
     // Select the actual polygon elements inside your SVG containers
     const polygon1 = svg1.querySelector('polygon'); 
     const polygon2 = svg2.querySelector('polygon'); 
@@ -54,6 +57,8 @@ document.addEventListener('DOMContentLoaded', function () {
     buttons.forEach(function (button, index) {
         button.addEventListener('mouseover', () => {
             // Position SVGs based on button position with transition
+            sfx1.play(); // Play the hover sound
+            sfx1.currentTime = 0.05; // Reset the sound to the beginning
             svg1.style.left = `${pointsInfoPerButton[index].left}`;
             svg1.style.top = `${pointsInfoPerButton[index].top}`;
             svg2.style.left = `${pointsInfoPerButton[index].left}`;
