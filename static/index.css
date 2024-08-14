@@ -129,7 +129,7 @@ video {
     z-index: 10;
     border: none;
     opacity: 0;
-    transition: opacity 1s ease-in-out;
+    transition: font-size 0.25s ease;
     background-color: transparent;
     font-family: persona3;
     font-size: 78px;
@@ -140,18 +140,11 @@ video {
     padding: 0px 0px;
 }
 
-.MenuButtons:hover {
-    z-index: 5;
-    text-shadow: 0 1px 0 #000000, 0 2px 0 #000000,
-        0 3px 0 #000000, 0 2px 0 #000000,
-        0 20px 30px rgba(0, 0, 0, 0);
-    font-size: 86px;
-    transition: font-size 0.05s ease;
-}
-
 .MenuText:hover {
     color: #000000;
     z-index: 5;
+    font-size: 86px;
+    transition: font-size 0.2s ease;
 }
 
 #MenuB1Text:hover {
@@ -231,20 +224,54 @@ video {
 
 #MenuB1:hover {
     z-index: 5;
+    text-shadow: 0 1px 0 #000000, 0 2px 0 #000000,
+        0 3px 0 #000000, 0 2px 0 #000000,
+        0 20px 30px rgba(0, 0, 0, 0);
 }
 
 #MenuB2:hover {
     z-index: 5;
+    text-shadow: 0 1px 0 #000000, 0 2px 0 #000000,
+        0 3px 0 #000000, 0 2px 0 #000000,
+        0 20px 30px rgba(0, 0, 0, 0);
 }
 
 #MenuB3:hover {
     z-index: 5;
+    text-shadow: 0 1px 0 #000000, 0 2px 0 #000000,
+        0 3px 0 #000000, 0 2px 0 #000000,
+        0 20px 30px rgba(0, 0, 0, 0);
 }
 
 #MenuB4:hover {
     z-index: 5;
+    text-shadow: 0 1px 0 #000000, 0 2px 0 #000000,
+        0 3px 0 #000000, 0 2px 0 #000000,
+        0 20px 30px rgba(0, 0, 0, 0);
 }
 
 #MenuB5:hover {
     z-index: 5;
+    text-shadow: 0 1px 0 #000000, 0 2px 0 #000000,
+        0 3px 0 #000000, 0 2px 0 #000000,
+        0 20px 30px rgba(0, 0, 0, 0);
+}
+
+#BigNumber {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    border: none;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    background-color: transparent;
+    font-family: persona3;
+    font-size: 78px;
+    letter-spacing: -10px;
+    text-align: center;
+    font-weight: bold;
+    z-index: 1;
+    padding: 0px 0px;
 }

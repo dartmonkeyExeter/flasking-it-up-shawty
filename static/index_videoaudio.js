@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
     openingVideo.play(); // Start playing the opening video
     animateElements(); // Start the animation for the menu buttons
 
+    
 
     openingVideo.onended = function () {
         openingVideo.style.display = 'none'; // Hide the opening video
