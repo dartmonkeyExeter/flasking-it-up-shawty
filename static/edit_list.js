@@ -97,6 +97,28 @@ function fixBottomButtons() {
         document.getElementById('join-button').style.color = "#FFFFFF";
         document.getElementById('edit-button').style.color = "#FFFFFF";
         document.getElementById('delete-button').style.color = "#FFFFFF";
+
+        // add the hover effect
+        document.getElementById('join-button').onmouseover = function() {
+            document.getElementById('join-button').style.backgroundImage = 'url("/static/site images/MCbuttonBGhighlighted.png")';
+        }
+        document.getElementById('join-button').onmouseout = function() {
+            document.getElementById('join-button').style.backgroundImage = enabled_button_image;
+        }
+
+        document.getElementById('edit-button').onmouseover = function() {
+            document.getElementById('edit-button').style.backgroundImage = 'url("/static/site images/MCbuttonBGhighlighted.png")';
+        }
+        document.getElementById('edit-button').onmouseout = function() {
+            document.getElementById('edit-button').style.backgroundImage = enabled_button_image;
+        }
+
+        document.getElementById('delete-button').onmouseover = function() {
+            document.getElementById('delete-button').style.backgroundImage = 'url("/static/site images/MCbuttonBGhighlighted.png")';
+        }
+        document.getElementById('delete-button').onmouseout = function() {
+            document.getElementById('delete-button').style.backgroundImage = enabled_button_image;
+        }
     }
 }
 
