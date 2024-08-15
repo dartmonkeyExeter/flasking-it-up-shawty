@@ -3,25 +3,51 @@
 
 <head>
     <title>Edit List</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='editlist.css') }}">
+    <script src="{{ url_for('static', filename='edit_list.js') }}"></script>
 </head>
 
 <body>
-    <h1>Candidates</h1>
-    <p>Here are the candidates:</p>
 
-    <form method="post" action="/editlist">
-        <input type="text" name="query" placeholder="Search..." value="{{ query }}">
-        <input type="submit" value="Search">
-    </form>
+    <audio autoplay loop>
+        <source src="{{ url_for('static', filename='site sounds/minecraft.mp3') }}" type="audio/mpeg">
+    </audio>
 
-    <ul>
+    <audio id="click-sound">
+        <source src="{{ url_for('static', filename='site sounds/minecraftclick.mp3') }}" type="audio/mpeg">
+    </audio>
+
+    <h2 id="list-header">Play Multiplayer</h2>
+
+    <ul id="server-list">
         {% for candidate in candidates %}
         <li>
-            <a href="{{ url_for('edit', candidate_id=candidate[0]) }}">{{ candidate[1] }}</a>
-            <button onclick="window.location.href='{{ url_for('delete', candidate_id=candidate[0]) }}'">Delete</button>
+            <div class="list-item">
+                <div class="div-server-button" onclick="activateButton(this)">
+                    {% set filename = 'candidate images/' + filenames[candidate[1]] %}
+                    <img src="{{ url_for('static', filename=filename) }}" id="server-img">   
+                    <span id="server-name">{{ candidate[1] }}</span>
+                    <span id="player-count">{{ candidate[0] }}/{{candidate_max}}</span>
+                    <span id="description">{{ candidate[3] }}</span>
+                    {% if candidate[5] == 1 %}
+                        <img src="../static/site images/ping_5.png" class="ping">
+                    {% else %}
+                        <img src="../static/site images/unreachable.png" class="ping">
+                    {% endif %}
+                </div>
+            </div>
         </li>
         {% endfor %}
     </ul>
+
+    <div class="footer">
+        <button id="join-button" class="bottom-button" onclick="joinSelected()">Join Server</button>
+        <button id="back-button" class="bottom-button" onclick="cancel()">Cancel</button>
+        <button id="edit-button" class="bottom-button" onclick="editSelected()">Edit</button>
+        <button id="add-button" class="bottom-button" onclick="addServer()">Add Server</button>
+        <button id="refresh-button" class="bottom-button" onclick="refresh()">Refresh</button>
+        <button id="delete-button" class="bottom-button" onclick="deleteSelected()">Delete</button>
+    </div>
 </body>
 
 </html>

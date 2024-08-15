@@ -23,7 +23,7 @@ a {
     overflow: hidden;
     z-index: -1;
     /* Position behind other elements */
-    background-image: url("./site images/p3backgroundstatic.png");
+    background-color: white;
 }
 
 /* Style for video elements to cover the full container */

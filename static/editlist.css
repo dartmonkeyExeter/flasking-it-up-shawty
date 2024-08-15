@@ -1,0 +1,183 @@
+@font-face {
+    font-family: 'Minecraft';
+    src: url("./site fonts/Minecraft.otf");
+}
+
+body {
+    font-family: 'Minecraft', sans-serif;
+    background-image: url("./site images/serverbackground.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+#list-header {
+    text-align: center;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 3%;
+    left: 50%;
+    font-weight: normal;
+    stroke: black;
+    stroke-width: 2px;
+    font-size: 28px;
+    text-shadow: 2px 2px 4px #000000;
+
+}
+
+#server-list {
+    margin: 0 auto;
+    height: 615px;
+    width: 55%;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 10px;
+    position: absolute;
+    top: 42.5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: #C0C0C0 #000000;
+    list-style-type: none;
+}
+
+.list-item {
+    margin: 0px;
+    padding: 0px; /* Remove padding to allow the button to take full space */
+    border: 10px; /* Adjust border if necessary */
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch; /* Stretch the button to take full height */
+    font-family: 'Minecraft', sans-serif;
+    width: 100%; /* Ensure the list item takes full width */
+}
+
+.div-server-button {
+    background-color: rgba(0, 0, 0, 0); /* Ensure correct rgba syntax */
+    color: white;
+    padding: 0px 0px; /* Keep padding for button content */
+    text-align: justify;
+    text-decoration: none;
+    display: flex; /* Flex to handle full height within the list item */
+    justify-content: flex-start; /* Align text to the start */
+    align-items: center; /* Center the text vertically */
+    font-size: 24px;
+    margin: 0; /* Remove margin to take full space */
+    cursor: pointer;
+    border-radius: 0px;
+    font-family: 'Minecraft', sans-serif;
+    width: 100%; /* Ensures button takes full width of the list item */
+    height: 100%; /* Makes the button take the full height of the list item */
+    box-sizing: border-box; /* Include padding and border in the width/height */
+    position: relative;
+    left: 10px;
+    top: -10px;
+    z-index: 0;
+}
+
+.active {
+    border: 3px inset white;
+    background-color: #000;
+}
+
+#server-img {
+    height: 140px;
+    width: 140px;
+    padding: 5px;
+    padding-right: 10px;
+}
+
+#server-name {
+    position: absolute;
+    top: 15px;
+    left: 160px
+}
+
+
+#description {
+    position: absolute;
+    color: #808080;
+    top: 50px;
+    left: 165px;
+    font-size: 18px;
+}
+
+#player-count {
+    position: absolute;
+    text-align: left;
+    top: 15px;
+    left: 90%;
+    
+    color: #AAAAAA;
+}
+
+.ping {
+    position: absolute;
+    top: 10px;
+    left: 96%;
+    image-rendering: pixelated;
+    height: 32px;
+    width: 32px;
+}
+
+.bottom-button {
+    background-image: url("./site images/MCbuttonBG.png");
+    background-size: 100% 100%;
+    image-rendering: pixelated;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 90%;
+    left: 50%;
+    border: 1px solid black;
+    color: white;
+    text-shadow: 2px 3px #3F3F3F;
+    font-size: 24px;
+    font-family: 'Minecraft', sans-serif;
+    text-align: center;
+    height: 60px;
+    width: 260px;
+    cursor: pointer;
+}
+
+.bottom-button:hover{
+    background-image: url("./site images/MCbuttonBGhighlighted.png");
+}
+
+#back-button {
+    top: 92%;
+    left: 72%;
+}
+
+#refresh-button {
+    top: 92%;
+    left: 57.5%;
+}
+
+#delete-button{
+    top: 92%;
+    left: 42.5%;
+}
+
+#edit-button {
+    top: 92%;
+    left: 28%;
+}
+
+#add-button {
+    top: 85%;
+    left: 70%;
+    width: 340px;
+}
+
+#join-button {
+    top: 85%;
+    left: 30%;
+    width: 340px;
+}

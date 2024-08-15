@@ -176,6 +176,8 @@ def editlist():
     if "loggedin" not in session:
         return redirect(url_for("login"))
 
+    max_candidate_id = 0
+
     if request.method == "POST":
         with sqlite3.connect("data.db") as connection:
             cursor = connection.cursor()
@@ -190,7 +192,28 @@ def editlist():
             cursor.execute("SELECT * FROM candidates")
             candidates = cursor.fetchall()
 
-    return render_template("edit_list.html", candidates=candidates)
+    max_candidate_id = max([candidate[0] for candidate in candidates])
+
+    # Get all image filenames, create a dictionary with candidate name as key and image filename as value
+    files = {}
+    for candidate in candidates:
+        name = candidate[1]
+        file_exts = ["png", "jpg", "jpeg", "jfif", "webp"]
+        base_path = "static/candidate images/"
+        image_filename = None
+
+        for ext in file_exts:
+            candidate_image = f"{name}.{ext}"
+            if os.path.exists(os.path.join(base_path, candidate_image)):
+                image_filename = candidate_image
+                break
+
+        if image_filename is None:
+            image_filename = "default.jpg"
+
+        files[name] = image_filename
+
+    return render_template("edit_list.html", candidates=candidates, filenames=files, candidate_max=max_candidate_id)
 
 
 @app.route("/edit/")
