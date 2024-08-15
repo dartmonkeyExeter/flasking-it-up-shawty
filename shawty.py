@@ -91,7 +91,7 @@ def candidates():
 @app.route("/login/", methods=["GET", "POST"])
 def login():
     if "loggedin" in session:
-        return redirect(url_for("admin"))
+        return redirect(url_for("editlist"))
 
     if request.method == "POST":
         username = request.form["username"]
@@ -116,14 +116,6 @@ def login():
             )
 
     return render_template("login_page.html")
-
-
-@app.route("/admin/")
-def admin():
-    if "loggedin" in session:
-        return render_template("admin_page.html")
-    return redirect(url_for("login"))
-
 
 @app.route("/logout/")
 def logout():
