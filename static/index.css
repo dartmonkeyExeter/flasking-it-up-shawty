@@ -118,7 +118,7 @@ video {
 }
 @font-face {
     font-family: persona3;
-    src: url("./p3r.otf");
+    src: url("./site fonts/p3r.otf");
 }
 
 .MenuButtons {

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>So you're finally awake?</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -100;
+        }
+    </style>
+</head>
+<body>
+    <video autoplay id="skyrim">
+        <source src="{{ url_for('static', filename='site sounds/skyrim.mp4') }}" type="video/mp4">
+    </video>
+    <script>
+        const video = document.getElementById('skyrim');
+        video.addEventListener('ended', function() {
+            window.location.href = "{{ url_for('admin') }}";
+        });
+    </script>
+</body>
+</html>

@@ -1,19 +1,45 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Log In</title>
-    <link rel="stylesheet" type="text/css" href="static/login_page.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='skyrim.css') }}">
 </head>
+
 <body>
-    <h1>Log In</h1>
-    {% if error %}
-        <p style="color: red;">{{ error }}</p>
-    {% endif %}
+    <audio autoplay loop>
+        <source src="{{ url_for('static', filename='site sounds/skyrimtheme.mp3') }}" type="audio/mpeg">
+    </audio>
     
-    <form method="POST">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <input type="submit" value="Log In">
+    <video autoplay loop>
+        <source src="{{ url_for('static', filename='site sounds/smoke.mp4') }}" type="video/mp4" id="video-background">
+    </video>
+
+    <div class="main-container">
+        <img src="{{ url_for('static', filename='site images/skyrimoverlay.png') }}" id="skyrim-menu">
+
+        {% if error %}
+        <div id="error">
+            <p>{{ error }}</p>
+        </div>
+        {% endif %}
+
+        <div id="login-form">
+            <form method="POST" id="loginForm">
+                <label for="username" class="text-entry">Username</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password" class="text-entry">Password</label>
+                <input type="password" id="password" name="password" required>
+                <input type="submit" value="Log-In" id="submit">
+            </form>
+        </div>
+        
+        <button id="back-button" onclick="window.location.href='{{ url_for('home') }}'"></button>
+        <img src="{{ url_for('static', filename='site images/selectorleft.png') }}" class="hidden" id="s-left">
+        <img src="{{ url_for('static', filename='site images/selectorright.png') }}" class="hidden" id="s-right">
+        
+    </div>
+
+</body>
+
 </html>

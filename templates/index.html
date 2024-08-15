@@ -15,15 +15,15 @@
     <h1 id="Credit">Designed by Aaron Hampson.</h1>
 
     <audio loop id="bgm">
-        <source src="../static/site%20images/CS.ogg" type="audio/ogg">
+        <source src="{{ url_for('static', filename='site sounds/CS.ogg') }}" type="audio/ogg">
     </audio>
 
     <audio id="hover">
-        <source src="../static/site%20images/plim.mp3" type="audio/mpeg">
+        <source src="{{ url_for('static', filename='site sounds/plim.mp3') }}" type="audio/mpeg">
     </audio>
 
     <audio id="openingsound">
-        <source src="../static/site%20images/mainmenuopen.mp3" type="audio/mpeg">
+        <source src="{{ url_for('static', filename='site sounds/mainmenuopen.mp3') }}" type="audio/mpeg">
     </audio>
 
     <div class="overlay-container">
@@ -62,7 +62,7 @@
         <a href="{{ url_for('admin') }}" class="MenuText" id="MenuB4Text">ADMIN</a>
     </button>
     <button class="MenuButtons" id="MenuB5">
-        <a href="{{ url_for('login') }}" class="MenuText" id="MenuB5Text">SYSTEM</a>
+        <a href="{{ url_for('login') }}" class="MenuText" id="MenuB5Text">CREDITS</a>
     </button>
 </body>
 

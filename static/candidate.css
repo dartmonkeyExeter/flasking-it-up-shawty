@@ -1,6 +1,6 @@
 @font-face {
     font-family: kirbyfont;
-    src: url(kirbyfont.otf);
+    src: url("./site fonts/kirbyfont.otf");
 }
 
 @keyframes scrollStripes {

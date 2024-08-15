@@ -8,6 +8,12 @@
 
 <body>
     <div id="TopBar"></div>
+    {% for candidate in candidates %}
+        <li>
+            <a href="{{ url_for('candidate', candidate_id=candidate[0]) }}">{{ candidate[1] }}</a>
+        </li>
+
+        {% endfor %}
 </body>
 
 </html>

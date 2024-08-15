@@ -90,7 +90,6 @@ def candidates():
 
 @app.route("/login/", methods=["GET", "POST"])
 def login():
-
     if "loggedin" in session:
         return redirect(url_for("admin"))
 
@@ -110,7 +109,7 @@ def login():
             session["loggedin"] = True
             session["id"] = account[0]
             session["username"] = account[1]
-            return redirect(url_for("admin"))
+            return render_template("soyourefinallyawake.html")
         else:
             return render_template(
                 "login_page.html", error="Invalid username or password."
@@ -301,12 +300,18 @@ def delete(candidate_id):
 
     with sqlite3.connect("data.db") as connection:
         cursor = connection.cursor()
+        name = cursor.execute("SELECT name FROM candidates WHERE id = ?", (candidate_id,)).fetchone()[0]
         cursor.execute("DELETE FROM candidates WHERE id = ?", (candidate_id,))
         cursor.execute("DELETE FROM candidate_skills WHERE candidate_id = ?", (candidate_id,))
         connection.commit()
 
-    return redirect(url_for("editlist"))
+    exts = ["png", "jpg", "jpeg", "jfif", "webp"]
 
+    for ext in exts:
+        if os.path.exists(f"static/candidate images/{name}.{ext}"):
+            os.remove(f"static/candidate images/{name}.{ext}")
+            break
+    return redirect(url_for("editlist"))
 
 if __name__ == "__main__":
     app.run(debug=True)
