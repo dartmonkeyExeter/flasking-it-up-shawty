@@ -8,6 +8,15 @@
 </head>
 
 <body>
+    <audio autoplay loop>
+        <source src="{{ url_for('static', filename='site sounds/kirby.mp3') }}" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // turn down the volume
+        document.getElementsByTagName("audio")[0].volume = 0.4;
+    </script>
+
     <div id="HomeButtonDiv">
         <a href="{{ url_for('candidates') }}">
             <img src="{{ url_for('static', filename='site images/logo.png') }}" id="HomeButton" height="50px" width="auto">
