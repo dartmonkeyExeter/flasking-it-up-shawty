@@ -46,7 +46,7 @@ function deleteSelected() {
 }
 
 function addServer() {
-    window.location.href = '/add_server';
+    window.location.href = '/register';
 }
 
 function refresh() {

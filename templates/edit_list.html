@@ -47,6 +47,10 @@
         <button id="add-button" class="bottom-button" onclick="addServer()">Add Server</button>
         <button id="refresh-button" class="bottom-button" onclick="refresh()">Refresh</button>
         <button id="delete-button" class="bottom-button" onclick="deleteSelected()">Delete</button>
+        <form method="post" action="/editlist">
+            <input type="text" name="query" placeholder="Search" value="{{ query }}" id="search-bar">
+        </form>
+</form>
     </div>
 </body>
 

@@ -181,3 +181,24 @@ body {
     left: 30%;
     width: 340px;
 }
+
+#search-bar {
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 340px;
+    height: 40px;
+    font-size: 24px;
+    padding: 5px;
+    border: 2px inset white;
+    background-color: rgba(0, 0, 0, 1);
+    color: white;
+    text-align: center;
+    font-family: 'Minecraft', sans-serif;
+}
+
+input[type="text"]:focus {
+    outline: none; /* Removes the default browser outline */
+    box-shadow: none; /* Removes any additional shadows (if applied by browser) */
+}

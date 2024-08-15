@@ -192,8 +192,10 @@ def editlist():
             cursor.execute("SELECT * FROM candidates")
             candidates = cursor.fetchall()
 
-    max_candidate_id = max([candidate[0] for candidate in candidates])
-
+    try:
+        max_candidate_id = max([candidate[0] for candidate in candidates])
+    except ValueError:
+        max_candidate_id = 0
     # Get all image filenames, create a dictionary with candidate name as key and image filename as value
     files = {}
     for candidate in candidates:
