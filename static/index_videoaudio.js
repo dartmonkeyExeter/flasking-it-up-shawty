@@ -2,7 +2,22 @@ document.addEventListener('DOMContentLoaded', function () {
     const openingVideo = document.getElementById('openingVideo');
     const loopingVideo = document.getElementById('loopingVideo');
     const bgm = document.getElementById('bgm');
+    const bgmSource = document.getElementById('bgmSource');
     const sfx2 = document.getElementById('openingsound');
+
+    // gonna make it play a random song from the list
+    
+    const path = "static/site sounds/";
+    const songs = [ 
+        "ChangingSeasons.mp3",
+        "IwatodaiDorm.mp3",
+        "WhenMoonsReachingOutStars.mp3",
+        "ColorYourNight.mp3"
+    ];
+    const randomSong = songs[Math.floor(Math.random() * songs.length)];
+    bgmSource.src = path + randomSong;
+    bgm.load();
+
 
     bgm.volume = 0.25; // Set the volume of the background music to 10%
     sfx2.volume = 0.25; // Set the volume of the opening sound to 50%
