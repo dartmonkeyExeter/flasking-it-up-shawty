@@ -50,7 +50,7 @@ function addServer() {
 }
 
 function refresh() {
-    window.location.href = '/edit_list';
+    window.location.href = '/editlist';
 }
 
 function cancel() {
