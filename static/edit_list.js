@@ -9,11 +9,10 @@ function activateButton(button) {
     // Remove the 'active' class from any currently active button
     var current = document.querySelector('.active');
     if (current) {
-        clickSound.currentTime = 0;
-        clickSound.play();
         current.classList.remove('active');
     }
-
+    clickSound.currentTime = 0;
+    clickSound.play();
     // Add the 'active' class to the clicked button
     button.classList.add('active');
     fixBottomButtons();
