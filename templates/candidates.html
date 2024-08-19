@@ -40,6 +40,7 @@
         </div>
     </span>
 
+    <button id="back-button" onclick="window.location.href = '{{ url_for('home') }}'"></button>
     
     <div id="melee-overlay-div">
         <img src="{{ url_for('static', filename='site images/meleeoverlay.png') }}" id="melee-overlay">
@@ -60,14 +61,6 @@
                 {% else %}
                 <img src="{{ url_for('static', filename='site images/meleecharacterframe.png') }}" class="frame">
                 {% endif %}
-            </div>
-        {% endfor %}
-        
-        {% for i in range(1, 40) %}
-            <div class="character" id="char_{{i + 10}}">
-                <h1 class="character-name">fart</h1>
-                <img src="{{ url_for('static', filename='candidate images/test.png') }}" class="portrait">
-                <img src="{{ url_for('static', filename='site images/meleecharacterframe.png') }}" class="frame">
             </div>
         {% endfor %}
     </div>

@@ -86,6 +86,22 @@ video {
     height: 5px;
 }
 
+#back-button {
+    position: absolute;
+    transform: translate(-50%, -50%) skew(0deg, 0deg);
+    top: 0%;
+    left: 88.5%;
+    width: 12.5%;
+    height: 30%;
+    pointer-events: auto;
+    cursor: pointer;
+    z-index: 500;
+
+    background-color: rgba(0, 236, 20, 0);
+    border: none;
+    /* change when debugging */
+}
+
 #melee-overlay-div {
     position: absolute;
     width: 100%;
