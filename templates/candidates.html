@@ -21,6 +21,11 @@
         <audio autoplay id="melee-announce">
             <source src="{{ url_for('static', filename='site sounds/MELEE.mp3') }}" type="audio/mpeg">
         </audio>
+
+        <audio id="melee-select">
+            <source type="audio/wav">
+        </audio>
+
         <div id="video-container">
             <video autoplay loop>
                 <source src="{{ url_for('static', filename='site sounds/MeleeBG.mp4') }}" type="video/mp4">
@@ -57,13 +62,20 @@
         {% endfor %}
         
         {% for i in range(1, 40) %}
-            <div class="character">
+            <div class="character" id="char_{{i + 10}}">
                 <h1 class="character-name">fart</h1>
                 <img src="{{ url_for('static', filename='candidate images/test.png') }}" class="portrait">
                 <img src="{{ url_for('static', filename='site images/meleecharacterframe.png') }}" class="frame">
             </div>
         {% endfor %}
     </div>
+
+    <div id="player">
+        <div id="player-portrait-overflow">
+            <img src="{{ url_for('static', filename='site images/fox.png') }}" id="player-portrait">
+        </div>
+        <img src="{{ url_for('static', filename='site images/player1frameoverlay.png') }}" id="player-overlay">
+    </div>  
 </body>
 
 </html>

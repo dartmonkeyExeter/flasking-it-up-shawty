@@ -1,13 +1,24 @@
 
-
-
-
 var clicked = false;
 
 window.addEventListener('DOMContentLoaded', function() {
     var chip = document.getElementById('player-chip');
     var cursor = document.getElementById('custom-cursor');
     var characterContainer = document.getElementById('characters-div');
+    var characterNameAudioElement = document.getElementById('melee-select');
+    characterNameAudioElement.volume = 0.5;
+    
+    var voiceClips = [];
+    var portraits = [];
+
+    var characterNames = ['Dr. Mario', 'Mario', 'Luigi', 'Bowser', 'Peach', 'Yoshi', 'DK', 'Captain Falcon', 'Ganondorf', 'Falco', 'Fox', 'Ness', 'Ice Climbers', 'Kirby', 'Samus', 'Zelda', 'Link', 'Young Link', 'Pichu', 'Pikachu', 'Jigglypuff', 'Mewtwo', 'Mr. Game&Watch', 'Marth', 'Roy'];
+    
+    characterNames.forEach((characterName, index) => {
+        voiceClips.push('../static/site sounds/MeleeAnnouncer/' + (index + 1) + '_' + characterName + '.wav');
+        portraits.push('../static/site images/MeleePortraits/' + characterName + '.png');
+    });
+
+    console.log(voiceClips);
 
     function overlapping(rect1, rect2) {
         return !(rect1.right < rect2.left ||
@@ -75,7 +86,11 @@ window.addEventListener('DOMContentLoaded', function() {
 
             
             if (placedCell) {
-                window.location.href  = '/candidates/' + candidateId;
+                characterNameAudioElement.src = voiceClips[(candidateId - 1) % voiceClips.length];
+                characterNameAudioElement.play();
+                setTimeout(function() {
+                    window.location.href  = '/candidates/' + candidateId;
+                }, 1500);
             }
         }
     });
