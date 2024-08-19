@@ -3,17 +3,51 @@
 
 <head>
     <title>Candidates</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='pico.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='candidates.css') }}">
+    <script src="{{ url_for('static', filename='candidates.js') }}"></script>
 </head>
 
 <body>
-    <div id="TopBar"></div>
-    {% for candidate in candidates %}
-        <li>
-            <a href="{{ url_for('candidate', candidate_id=candidate[0]) }}">{{ candidate[1] }}</a>
-        </li>
+    <span>
+        <audio autoplay loop id="melee-music">
+            <source src="{{ url_for('static', filename='site sounds/MeleeMenuSong.mp3') }}" type="audio/mpeg">
+            <script>
+                var audio = document.getElementById("melee-music");
+                audio.volume = 0.5;
+            </script>
+        </audio>
 
+        <audio autoplay id="melee-announce">
+            <source src="{{ url_for('static', filename='site sounds/MELEE.mp3') }}" type="audio/mpeg">
+        </audio>
+        <div id="video-container">
+            <video autoplay loop>
+                <source src="{{ url_for('static', filename='site sounds/MeleeBG.mp4') }}" type="video/mp4">
+            </video>
+        </div>
+        <div>
+            <img src="{{ url_for('static', filename='site images/point.png') }}" id="custom-cursor">
+        </div>
+        <div>
+            <img src="{{ url_for('static', filename='site images/MeleeChip.gif') }}" id="player-chip">
+        </div>
+    </span>
+
+    
+    <div id="melee-overlay-div">
+        <img src="{{ url_for('static', filename='site images/meleeoverlay.png') }}" id="melee-overlay">
+    </div>
+
+    <div id="characters-div">
+        {% for candidate in candidates %}
+            {% set filename = filenames[loop.index - 1] %}
+            <div class="character">
+                <h1 class="character-name">{{ candidate[1] }}</h1>
+                <img src="{{ url_for('static', filename='candidate images/' ~ filename) }}" class="portrait">
+                <img src="{{ url_for('static', filename='site images/meleecharacterframe.png') }}" class="frame">
+            </div>
         {% endfor %}
+    </div>
 </body>
 
 </html>

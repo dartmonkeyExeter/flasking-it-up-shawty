@@ -52,7 +52,7 @@ def candidate(candidate_id):
                 break
 
         if image_filename is None:
-            image_filename = "default.jpg"
+            image_filename = "default.png"
         cursor.execute(
             "SELECT skills.name, candidate_skills.rating FROM candidate_skills JOIN skills ON candidate_skills.skill_id = skills.id WHERE candidate_skills.candidate_id = ?",
             (candidate_id,),
@@ -82,9 +82,26 @@ def candidates():
             cursor.execute("SELECT * FROM candidates WHERE visible = 1")
         candidates = cursor.fetchall()
 
+    filenames = []
+    exts = ["png", "jpg", "jpeg", "jfif", "webp"]
+    image_filename = None
+
+    for candidate in candidates:
+        for ext in exts:
+            if os.path.exists(f"static/candidate images/{candidate[1]}.{ext}"):
+                image_filename = f"{candidate[1]}.{ext}"
+                break
+        if image_filename is None:
+            filenames.append("default.png")
+        else:
+            filenames.append(image_filename)
+        image_filename = None
+
+    print(filenames)
+
     # Render template with candidate details
     return render_template(
-        "candidates.html", candidates=candidates, loggedin="loggedin" in session
+        "candidates.html", candidates=candidates, filenames=filenames
     )
 
 
@@ -211,7 +228,7 @@ def editlist():
                 break
 
         if image_filename is None:
-            image_filename = "default.jpg"
+            image_filename = "default.png"
 
         files[name] = image_filename
 
