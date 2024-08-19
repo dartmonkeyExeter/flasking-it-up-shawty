@@ -83,6 +83,19 @@ video {
     opacity: 0.85;
 }
 
+#characters-overlay-div {
+    position: absolute;
+    transform: translate(-50%, -50%) skew(0deg, 0deg);
+    top: 40%;
+    left: 50%;
+    width: 55%;
+    height: 80%;
+    pointer-events: none;
+    z-index: 2;
+    
+
+}
+
 #characters-div {
     position: absolute;
     transform: translate(-50%, -50%) skew(0deg, 0deg);
@@ -147,9 +160,10 @@ video {
 .character-name{
     position: absolute;
     z-index: 11;
-    bottom: -28%;
+    top: 65%;
+    left: 6.5%;
     width: 90%;
-    right: 3%;
+
     font-size: 28px;
     font-family: 'MeleeCharacterName';
     color: #D4C9C4;

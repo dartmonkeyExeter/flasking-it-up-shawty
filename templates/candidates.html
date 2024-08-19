@@ -5,6 +5,7 @@
     <title>Candidates</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='candidates.css') }}">
     <script src="{{ url_for('static', filename='candidates.js') }}"></script>
+    <link rel="icon" href="{{ url_for('static', filename='site icons/melee.ico') }}">
 </head>
 
 <body>
@@ -38,12 +39,27 @@
         <img src="{{ url_for('static', filename='site images/meleeoverlay.png') }}" id="melee-overlay">
     </div>
 
+    <div id="characters-overlay-div"></div>
+
     <div id="characters-div">
         {% for candidate in candidates %}
             {% set filename = filenames[loop.index - 1] %}
-            <div class="character">
-                <h1 class="character-name">{{ candidate[1] }}</h1>
+            <div class="character" id="char_{{candidate[0]}}">
+                <h1 class="character-name">{{ candidate[1].split(' ')[0] }}</h1>
                 <img src="{{ url_for('static', filename='candidate images/' ~ filename) }}" class="portrait">
+                
+                {% if candidate[0] == 25 %}
+                <img src="{{ url_for('static', filename='site images/meleecharacterframe.png') }}" class="frame">
+                {% else %}
+                <img src="{{ url_for('static', filename='site images/meleecharacterframe.png') }}" class="frame">
+                {% endif %}
+            </div>
+        {% endfor %}
+        
+        {% for i in range(1, 40) %}
+            <div class="character">
+                <h1 class="character-name">fart</h1>
+                <img src="{{ url_for('static', filename='candidate images/test.png') }}" class="portrait">
                 <img src="{{ url_for('static', filename='site images/meleecharacterframe.png') }}" class="frame">
             </div>
         {% endfor %}

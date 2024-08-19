@@ -278,6 +278,13 @@ def edit(candidate_id):
         visible = request.form.get("visible")
         visible = 1 if visible == "on" else 0
 
+        exts = ["png", "jpg", "jpeg", "jfif", "webp"]
+
+        for ext in exts:
+            if os.path.exists(f"static/candidate images/{cName}.{ext}"):
+                os.remove(f"static/candidate images/{cName}.{ext}")
+                break
+
         image = request.files["img"]
         if image.filename != "":
             file_ext = image.filename.split(".")[-1]
