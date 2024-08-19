@@ -5,6 +5,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'PlayerName';
+    src: url("./site fonts/Univers.otf")format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 html,
 body {
     height: 100%;
@@ -42,25 +49,41 @@ video {
     z-index: 10000;
     background: center center no-repeat;
     background-size: contain;
-    transform: translate(-50%, -50%);
+    transform: translate(-45%, -40%);
     pointer-events: none;
     user-select: none;
 }
 
 #player-chip {
-    position: absolute;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    top: 50%;
-    left: 50%;
+    top: 64%;
+    left: 30%;
     z-index: 200;
-    transform: translate(-75%, -100%);
     user-select: none;
     -webkit-user-drag: none;
+    transform: translate(-50%, -50%);
     width: 72px;
     image-rendering: pixelated;
     height: auto;
+}
+
+#player-chip img {
+    position: absolute;
+    width: 100%;
+    height: auto;
+}
+
+#chip-hbox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 201;
+    transform: translate(-50%, -50%);
+    width: 5px;
+    height: 5px;
 }
 
 #melee-overlay-div {
@@ -88,14 +111,28 @@ video {
 #characters-overlay-div {
     position: absolute;
     transform: translate(-50%, -50%) skew(0deg, 0deg);
-    top: 36%;
+    top: 35%;
     left: 49%;
-    width: 50%;
-    height: 45%;
+    width: 47%;
+    height: 42%;
     pointer-events: none;
     z-index: 2;
 
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0);
+    /* change when debugging */
+}
+
+#safe-place-zone {
+    position: absolute;
+    transform: translate(-50%, -50%) skew(0deg, 0deg);
+    top: 79%;
+    left: 50%;
+    width: 100%;
+    height: 42%;
+    pointer-events: none;
+    z-index: 2;
+
+    background-color: rgba(255, 0, 0, 0);
     /* change when debugging */
 }
 
@@ -223,6 +260,7 @@ video {
     image-rendering: pixelated;
     pointer-events: none;
     z-index: 19;
+    opacity: 0.5;
 }
 
 #player-overlay {
@@ -231,4 +269,20 @@ video {
     height: auto;
     z-index: 21;
     top: 0%;
+}
+
+#player-name {
+    position: absolute;
+    z-index: 22;
+    top: 70%;
+    left: 0%;
+    width: 100%;
+    font-size: 32px;
+    font-family: 'PlayerName';
+    color: #fff;
+    text-transform: capitalize;
+    text-align: center;
+    overflow: hidden;
+    letter-spacing: 1px;
+    font-weight: normal;
 }

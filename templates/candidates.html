@@ -34,8 +34,9 @@
         <div>
             <img src="{{ url_for('static', filename='site images/point.png') }}" id="custom-cursor">
         </div>
-        <div>
-            <img src="{{ url_for('static', filename='site images/MeleeChip.gif') }}" id="player-chip">
+        <div id="player-chip">
+            <img src="{{ url_for('static', filename='site images/MeleeChip.gif') }}">
+            <div id="chip-hbox"></div>
         </div>
     </span>
 
@@ -45,6 +46,7 @@
     </div>
 
     <div id="characters-overlay-div"></div>
+    <div id="safe-place-zone"></div>
 
     <div id="characters-div">
         {% for candidate in candidates %}
@@ -72,9 +74,10 @@
 
     <div id="player">
         <div id="player-portrait-overflow">
-            <img src="{{ url_for('static', filename='site images/fox.png') }}" id="player-portrait">
+            <img id="player-portrait">
         </div>
         <img src="{{ url_for('static', filename='site images/player1frameoverlay.png') }}" id="player-overlay">
+        <div id="player-name"></div>
     </div>  
 </body>
 
