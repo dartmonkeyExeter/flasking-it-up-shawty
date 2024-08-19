@@ -5,6 +5,7 @@ window.addEventListener('DOMContentLoaded', function() {
     var chip = document.getElementById('player-chip');
     var cursor = document.getElementById('custom-cursor');
     var characterContainer = document.getElementById('characters-div');
+    var playerPortrait = document.getElementById('player-portrait');
     var characterNameAudioElement = document.getElementById('melee-select');
     characterNameAudioElement.volume = 0.5;
     
@@ -56,7 +57,17 @@ window.addEventListener('DOMContentLoaded', function() {
         if (clicked) {
             chip.style.left = e.pageX + 'px';
             chip.style.top = e.pageY + 'px';
-        }
+            var visibleCellsList = getVisibleCells(document.getElementById('characters-overlay-div'));
+            var placedCell = null;
+            for(let cell of visibleCellsList) {
+                if (overlapping(chip.getBoundingClientRect(), cell.getBoundingClientRect())) {
+                    placedCell = cell;
+                }
+            }
+            if (placedCell) {
+                playerPortrait.src = portraits[(placedCell.id.split('_')[1] - 1) % portraits.length];
+           }
+    }
     });
 
     chip.addEventListener('mousedown', function(e) {
