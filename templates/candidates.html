@@ -52,7 +52,7 @@
     <div id="characters-div">
         {% for candidate in candidates %}
             {% set filename = filenames[loop.index - 1] %}
-            <div class="character" id="char_{{loop.index}}">
+            <div class="character" id="char_{{candidate[0]}}">
                 <h1 class="character-name">{{ candidate[1].split(' ')[0] }}</h1>
                 <img src="{{ url_for('static', filename='candidate images/' ~ filename) }}" class="portrait">
                 
