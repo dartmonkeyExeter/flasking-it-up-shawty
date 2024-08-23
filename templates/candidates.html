@@ -5,6 +5,7 @@
     <title>Candidates</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='candidates.css') }}">
     <script src="{{ url_for('static', filename='candidates.js') }}"></script>
+    <script src="{{ url_for('static', filename='meleerotate.js') }}"></script>
     <link rel="icon" href="{{ url_for('static', filename='site icons/melee.ico') }}">
 </head>
 
@@ -26,53 +27,58 @@
             <source type="audio/wav">
         </audio>
 
+        
+        <div>
+            <img src="{{ url_for('static', filename='site images/point.png') }}" id="custom-cursor">
+        </div>
+
+    </span>
+
+    <div id="characters-overlay-div"></div>
+    <div id="safe-place-zone"></div>
+
+    <div id="rotate-div">
         <div id="video-container">
             <video autoplay loop>
                 <source src="{{ url_for('static', filename='site sounds/MeleeBG.mp4') }}" type="video/mp4">
             </video>
         </div>
-        <div>
-            <img src="{{ url_for('static', filename='site images/point.png') }}" id="custom-cursor">
-        </div>
         <div id="player-chip">
             <img src="{{ url_for('static', filename='site images/MeleeChip.gif') }}">
             <div id="chip-hbox"></div>
         </div>
-    </span>
 
-    <button id="back-button" onclick="window.location.href = '{{ url_for('home') }}'"></button>
-    
-    <div id="melee-overlay-div">
-        <img src="{{ url_for('static', filename='site images/meleeoverlay.png') }}" id="melee-overlay">
-    </div>
+        <button id="back-button" onclick="window.location.href = '{{ url_for('home') }}'"></button>
 
-    <div id="characters-overlay-div"></div>
-    <div id="safe-place-zone"></div>
+        <div id="melee-overlay-div">
+            <img src="{{ url_for('static', filename='site images/meleeoverlay.png') }}" id="melee-overlay">
+        </div>
 
-    <div id="characters-div">
-        {% for candidate in candidates %}
+        <div id="characters-div">
+            {% for candidate in candidates %}
             {% set filename = filenames[loop.index - 1] %}
             <div class="character" id="char_{{candidate[0]}}">
                 <span class="image-id-span" id="char_{{candidate[0]}}_{{loop.index - 1}}"></span>
                 <h1 class="character-name">{{ candidate[1].split(' ')[0] }}</h1>
                 <img src="{{ url_for('static', filename='candidate images/' ~ filename) }}" class="portrait">
-                
+
                 {% if candidate[0] == 25 %}
                 <img src="{{ url_for('static', filename='site images/meleecharacterframeROY.png') }}" class="frame">
                 {% else %}
                 <img src="{{ url_for('static', filename='site images/meleecharacterframe.png') }}" class="frame">
                 {% endif %}
             </div>
-        {% endfor %}
-    </div>
-
-    <div id="player">
-        <div id="player-portrait-overflow">
-            <img id="player-portrait">
+            {% endfor %}
         </div>
-        <img src="{{ url_for('static', filename='site images/player1frameoverlay.png') }}" id="player-overlay">
-        <div id="player-name"></div>
-    </div>  
+
+        <div id="player">
+            <div id="player-portrait-overflow">
+                <img id="player-portrait">
+            </div>
+            <img src="{{ url_for('static', filename='site images/player1frameoverlay.png') }}" id="player-overlay">
+            <div id="player-name"></div>
+        </div>
+    </div>
 </body>
 
 </html>

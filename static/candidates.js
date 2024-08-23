@@ -24,8 +24,6 @@ window.addEventListener('DOMContentLoaded', function () {
         portraits.push('../static/site images/MeleePortraits/' + characterName + '.png');
     });
 
-    console.log(voiceClips);
-
     function overlapping(rect1, rect2) {
         return !(rect1.right < rect2.left ||
             rect1.left > rect2.right ||
