@@ -91,9 +91,11 @@ window.addEventListener('DOMContentLoaded', function () {
                     }
                 }
                 if (hoveredCell) {
-                    playerPortrait.src = portraits[(hoveredCell.id.split('_')[1] - 1) % portraits.length];
+                    // get the span of the cell with class "image-id-span", and use that instead of the id
+                    imageId = hoveredCell.getElementsByClassName('image-id-span')[0].id.split('_')[2];
+                    playerPortrait.src = portraits[imageId % portraits.length];
                     playerNameElement.style.opacity = 0.8;
-                    playerNameElement.innerHTML = characterNames[(hoveredCell.id.split('_')[1] - 1) % characterNames.length];
+                    playerNameElement.innerHTML = characterNames[imageId % portraits.length];
                 }
             }
             lastHoveredCell = hoveredCell;
@@ -145,9 +147,10 @@ window.addEventListener('DOMContentLoaded', function () {
 
                 if (placedCell) {
                     var candidateId = placedCell.id.split('_')[1];
+                    imageId = placedCell.getElementsByClassName('image-id-span')[0].id.split('_')[2];
                     playerPortrait.style.opacity = 1;
                     playerNameElement.style.opacity = 1;
-                    characterNameAudioElement.src = voiceClips[(candidateId - 1) % voiceClips.length];
+                    characterNameAudioElement.src = voiceClips[imageId % portraits.length];
                     characterNameAudioElement.play();
                     setTimeout(function () {
                         window.location.href = '/candidates/' + candidateId;
@@ -166,11 +169,14 @@ window.addEventListener('DOMContentLoaded', function () {
                 chip.style.top = randomCell.getBoundingClientRect().top + 62 + 'px';
 
                 var candidateId = randomCell.id.split('_')[1];
+                imageId = randomCell.getElementsByClassName('image-id-span')[0].id.split('_')[2];
                 playerPortrait.style.opacity = 1;
                 playerNameElement.style.opacity = 1;
-                playerNameElement.innerHTML = characterNames[(candidateId - 1) % characterNames.length];
-                playerPortrait.src = portraits[(candidateId - 1) % portraits.length];
-                characterNameAudioElement.src = voiceClips[(candidateId - 1) % voiceClips.length];
+                playerNameElement.innerHTML = characterNames[imageId % portraits.length];
+                
+                
+                playerPortrait.src = portraits[imageId % portraits.length];
+                characterNameAudioElement.src = voiceClips[imageId % portraits.length];
                 characterNameAudioElement.play();
                 setTimeout(function () {
                     window.location.href = '/candidates/' + candidateId;
