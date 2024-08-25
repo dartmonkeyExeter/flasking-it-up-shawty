@@ -1,7 +1,6 @@
 from flask import Flask, redirect, url_for, render_template, request, session
 import sqlite3
 import os
-import json
 
 os.chdir("C:/Users/aaron/Desktop/schol")
 

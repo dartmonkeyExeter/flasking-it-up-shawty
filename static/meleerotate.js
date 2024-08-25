@@ -35,9 +35,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
         } else if (e.key === 'ArrowRight') {
             rotateDiv.style.transform = `rotate3d(0, 1, 0, -${rotationAngle}deg) translateZ(${translateAmount}px)`;
         } else if (e.key === 'ArrowUp') {
-            rotateDiv.style.transform = `rotate3d(1, 0, 0, ${rotationAngle}deg) translateY(${translateAmount}px)`;
-        } else if (e.key === 'ArrowDown') {
             rotateDiv.style.transform = `rotate3d(1, 0, 0, -${rotationAngle}deg) translateY(${translateAmount}px)`;
+        } else if (e.key === 'ArrowDown') {
+            rotateDiv.style.transform = `rotate3d(1, 0, 0, ${rotationAngle}deg) translateY(${translateAmount}px)`;
         }
     };
 
