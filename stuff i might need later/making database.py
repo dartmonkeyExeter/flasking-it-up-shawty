@@ -1,7 +1,7 @@
 import sqlite3
 
 # Connect to SQLite database (or create it if it doesn't exist)
-connection = sqlite3.connect("C:/Users/aaron/Desktop/school summer project broooo (hanging myself in three days.)/data.db")
+connection = sqlite3.connect("C:/Users/aaron/Desktop/schol/data.db")
 cursor = connection.cursor()
 
 # Create the candidates table
